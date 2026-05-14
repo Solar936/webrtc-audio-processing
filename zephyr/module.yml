@@ -1,0 +1,4 @@
+name: webrtc_audio_processing
+build:
+  cmake-ext: true
+  kconfig-ext: true
