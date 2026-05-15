@@ -2,9 +2,6 @@
 
 #include <assert.h>
 #include <stdlib.h>
-#include <rtthread.h>
-#define DBG_TAG         "audio"
-#include "log.h"
 #include "webrtc_mem.h"
 
 #ifdef __cplusplus

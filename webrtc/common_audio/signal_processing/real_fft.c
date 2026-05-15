@@ -8,6 +8,7 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
+#include <assert.h>
 #include "webrtc/common_audio/signal_processing/include/real_fft.h"
 
 #include <stdlib.h>
@@ -17,10 +18,9 @@
 
 
 #ifdef FFT_USING_CMSIS_DSP
-    #include "arm_math.h"
-    #include "arm_const_structs.h"
+#include "arm_math.h"
+#include "arm_const_structs.h"
 #endif
-#include <rtthread.h>
 #include "webrtc_mem.h"
 
 #define AUDIO_MEM_ALLOC 1
@@ -45,7 +45,7 @@ struct RealFFT *WebRtcSpl_CreateRealFFT(int order)
     }
 
     self = malloc(sizeof(struct RealFFT));
-    RT_ASSERT(self);
+    assert(self);
     if (self == NULL)
     {
         return NULL;
@@ -54,7 +54,7 @@ struct RealFFT *WebRtcSpl_CreateRealFFT(int order)
 #ifdef AUDIO_MEM_ALLOC
     self->fft_busy = 0;
     self->complex_buf = (int16_t *)malloc((2 << kMaxFFTOrder) * sizeof(int16_t));
-    RT_ASSERT(self->complex_buf);
+    assert(self->complex_buf);
 #endif
     return self;
 }
@@ -102,10 +102,10 @@ int WebRtcSpl_RealForwardFFT(struct RealFFT *self,
 #ifdef AUDIO_MEM_ALLOC
     #if MALLOC_EVERYTIME
         int16_t *complex_buffer = malloc((2 << kMaxFFTOrder) * 2);
-        RT_ASSERT(complex_buffer);
+        assert(complex_buffer);
     #else
         int16_t *complex_buffer = self->complex_buf;
-        RT_ASSERT(!self->fft_busy);
+        assert(!self->fft_busy);
         self->fft_busy = 1;
     #endif
 #else
@@ -185,10 +185,10 @@ int WebRtcSpl_RealInverseFFT(struct RealFFT *self,
 #ifdef AUDIO_MEM_ALLOC
     #if MALLOC_EVERYTIME
         int16_t *complex_buffer = malloc((2 << kMaxFFTOrder) * 2);
-        RT_ASSERT(complex_buffer);
+        assert(complex_buffer);
     #else
         int16_t *complex_buffer = self->complex_buf;
-        RT_ASSERT(!self->fft_busy);
+        assert(!self->fft_busy);
         self->fft_busy = 1;
     #endif
 #else
@@ -246,10 +246,10 @@ int WebRtcSpl_RealForwardFFT(struct RealFFT *self,
 #ifdef AUDIO_MEM_ALLOC
     #if MALLOC_EVERYTIME
         int16_t *complex_buffer = malloc((2 << kMaxFFTOrder) * 2);
-        RT_ASSERT(complex_buffer);
+        assert(complex_buffer);
     #else
         int16_t *complex_buffer = self->complex_buf;
-        RT_ASSERT(!self->fft_busy);
+        assert(!self->fft_busy);
         self->fft_busy = 1;
     #endif
 #else
@@ -290,10 +290,10 @@ int WebRtcSpl_RealInverseFFT(struct RealFFT *self,
 #ifdef AUDIO_MEM_ALLOC
     #if MALLOC_EVERYTIME
         int16_t *complex_buffer = malloc((2 << kMaxFFTOrder) * 2);
-        RT_ASSERT(complex_buffer);
+        assert(complex_buffer);
     #else
         int16_t *complex_buffer = self->complex_buf;
-        RT_ASSERT(!self->fft_busy);
+        assert(!self->fft_busy);
         self->fft_busy = 1;
     #endif
 #else
@@ -346,10 +346,10 @@ int WebRtcSpl_RealForwardFFT(struct RealFFT *self,
 #ifdef AUDIO_MEM_ALLOC
     #if MALLOC_EVERYTIME
         int16_t *complex_buffer = malloc((2 << kMaxFFTOrder) * 2);
-        RT_ASSERT(complex_buffer);
+        assert(complex_buffer);
     #else
         int16_t *complex_buffer = self->complex_buf;
-        RT_ASSERT(!self->fft_busy);
+        assert(!self->fft_busy);
         self->fft_busy = 1;
     #endif
 #else
@@ -378,7 +378,7 @@ int WebRtcSpl_RealForwardFFT(struct RealFFT *self,
 #if 0
     status = HAL_FFT_StartFFT_IT(&(g_fft_env.fft_handle), &config);
     //rt_kprintf("fft status:%d, config:0x%x\n", status, &config);
-    RT_ASSERT(HAL_OK == status);
+    assert(HAL_OK == status);
 
     rt_event_recv(g_fft_env.int_ev, 1, RT_EVENT_FLAG_OR | RT_EVENT_FLAG_CLEAR, RT_WAITING_FOREVER, &evt);
 #else
@@ -445,10 +445,10 @@ int WebRtcSpl_RealInverseFFT(struct RealFFT *self,
 #ifdef AUDIO_MEM_ALLOC
     #if MALLOC_EVERYTIME
         int16_t *complex_buffer = malloc((2 << kMaxFFTOrder) * 2);
-        RT_ASSERT(complex_buffer);
+        assert(complex_buffer);
     #else
         int16_t *complex_buffer = self->complex_buf;
-        RT_ASSERT(!self->fft_busy);
+        assert(!self->fft_busy);
         self->fft_busy = 1;
     #endif
 #else
@@ -486,7 +486,7 @@ int WebRtcSpl_RealInverseFFT(struct RealFFT *self,
 
 #if 0
     status = HAL_FFT_StartFFT_IT(&(g_fft_env.fft_handle), &config);
-    RT_ASSERT(HAL_OK == status);
+    assert(HAL_OK == status);
     result = self->order - scale;
     rt_event_recv(g_fft_env.int_ev, 1, RT_EVENT_FLAG_OR | RT_EVENT_FLAG_CLEAR, RT_WAITING_FOREVER, &evt);
 #else

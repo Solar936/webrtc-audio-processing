@@ -8,13 +8,13 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
+#include <assert.h>
 #include "webrtc/modules/audio_processing/aecm/include/echo_control_mobile.h"
 
 #ifdef AEC_DEBUG
-    #include <stdio.h>
+#include <stdio.h>
 #endif
 #include <stdlib.h>
-#include <rtthread.h>
 #include "webrtc/common_audio/ring_buffer.h"
 #include "webrtc/common_audio/signal_processing/include/signal_processing_library.h"
 #include "webrtc/modules/audio_processing/aecm/aecm_core.h"
@@ -84,7 +84,7 @@ static int WebRtcAecm_DelayComp(AecMobile *aecmInst);
 void *WebRtcAecm_Create()
 {
     AecMobile *aecm = malloc(sizeof(AecMobile));
-    RT_ASSERT(aecm);
+    assert(aecm);
     WebRtcSpl_Init();
 
     aecm->aecmCore = WebRtcAecm_CreateCore();

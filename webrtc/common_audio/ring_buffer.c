@@ -11,12 +11,12 @@
 // A ring buffer to hold arbitrary data. Provides no thread safety. Unless
 // otherwise specified, functions return 0 on success and -1 on error.
 
+#include <assert.h>
 #include "webrtc/common_audio/ring_buffer.h"
 
 #include <stddef.h>  // size_t
 #include <stdlib.h>
 #include <string.h>
-#include <rtthread.h>
 #include "webrtc_mem.h"
 
 enum Wrap
@@ -82,14 +82,14 @@ RingBuffer *WebRtc_CreateBuffer(size_t element_count, size_t element_size)
     }
 
     self = malloc(sizeof(RingBuffer));
-    RT_ASSERT(self);
+    assert(self);
     if (!self)
     {
         return NULL;
     }
 
     self->data = malloc(element_count * element_size);
-    RT_ASSERT(self->data);
+    assert(self->data);
     if (!self->data)
     {
         free(self);

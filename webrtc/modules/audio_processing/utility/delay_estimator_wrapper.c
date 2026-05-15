@@ -13,7 +13,6 @@
 //#include <assert.h>
 #include <stdlib.h>
 #include <string.h>
-#include <rtthread.h>
 
 #include "webrtc/modules/audio_processing/utility/delay_estimator.h"
 #include "webrtc/modules/audio_processing/utility/delay_estimator_internal.h"
@@ -316,7 +315,7 @@ void *WebRtc_CreateDelayEstimator(void *farend_handle, int max_lookahead)
     if (farend_handle != NULL)
     {
         self = malloc(sizeof(DelayEstimator));
-        RT_ASSERT(self)
+        RT_ASSERT(self);
     }
 
     if (self != NULL)

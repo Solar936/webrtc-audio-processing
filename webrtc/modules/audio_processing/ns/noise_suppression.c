@@ -8,11 +8,11 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
+#include <assert.h>
 #include "webrtc/modules/audio_processing/ns/include/noise_suppression.h"
 
 #include <stdlib.h>
 #include <string.h>
-#include <rtthread.h>
 #include "webrtc/common_audio/signal_processing/include/signal_processing_library.h"
 #include "webrtc/modules/audio_processing/ns/defines.h"
 #include "webrtc/modules/audio_processing/ns/ns_core.h"
@@ -21,7 +21,7 @@
 NsHandle *WebRtcNs_Create()
 {
     NoiseSuppressionC *self = malloc(sizeof(NoiseSuppressionC));
-    RT_ASSERT(self);
+    assert(self);
     self->initFlag = 0;
     return (NsHandle *)self;
 }

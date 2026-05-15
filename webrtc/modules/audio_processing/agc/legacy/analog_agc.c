@@ -24,11 +24,8 @@
 #ifdef WEBRTC_AGC_DEBUG_DUMP
     #include <stdio.h>
 #endif
-#include <rtthread.h>
 #include "webrtc_mem.h"
 
-#undef assert
-#define assert RT_ASSERT
 
 /* The slope of in Q13*/
 static const int16_t kSlope1[8] = {21793, 12517, 7189, 4129, 2372, 1362, 472, 78};

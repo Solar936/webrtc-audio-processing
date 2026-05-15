@@ -6,9 +6,8 @@
 
 #ifndef __WEBRTC_MEM_H
 #define __WEBRTC_MEM_H
+#include <stdlib.h>
 
-#include <rtthread.h>
-#include "audio_mem.h"
 
 #if defined (SYS_HEAP_IN_PSRAM) && defined (AUDIO_MEM_ALLOC)
     #undef malloc

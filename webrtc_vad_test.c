@@ -1,8 +1,8 @@
 #if 0
 
-#include <rtthread.h>
 #define DBG_TAG         "vad"
 #define DBG_LVL          LOG_LVL_INFO
+#include <assert.h>
 #include "log.h"
 #include "audio_server.h"
 #include "webrtc/common_audio/vad/include/webrtc_vad.h"
@@ -21,7 +21,7 @@ static int audio_callback_record(audio_server_callback_cmt_t cmd, void *callback
     {
         audio_server_coming_data_t *p = (audio_server_coming_data_t *)reserved;
         
-        RT_ASSERT(p->data_len == 320);
+        assert(p->data_len == 320);
         ret = WebRtcVad_Process(handle, 16000, (int16_t*)p->data, p->data_len/2);
         
         if (ret == 1)
@@ -74,7 +74,7 @@ static void vadtest(uint8_t argc, char **argv)
     g_not_voice_times = 0;
 
     audio_client_t client = audio_open(AUDIO_TYPE_LOCAL_RECORD, AUDIO_RX, &pa, audio_callback_record, (void *)handle);
-    RT_ASSERT(client);
+    assert(client);
 
     while (record_seconds < 50)
     {

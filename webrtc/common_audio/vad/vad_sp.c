@@ -8,11 +8,9 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
-#include <rtthread.h>
 
-#undef assert
-#define assert RT_ASSERT
 
+#include <assert.h>
 #include "webrtc/common_audio/vad/vad_sp.h"
 
 #include "webrtc/common_audio/signal_processing/include/signal_processing_library.h"

@@ -11,11 +11,12 @@
 /*
  * Contains the API functions for the AEC.
  */
+#include <assert.h>
 #include "webrtc/modules/audio_processing/aec/include/echo_cancellation.h"
 
 #include <math.h>
 #ifdef WEBRTC_AEC_DEBUG_DUMP
-    #include <stdio.h>
+#include <stdio.h>
 #endif
 #include <stdlib.h>
 #include <string.h>

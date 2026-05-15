@@ -13,7 +13,6 @@
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
-#include <rtthread.h>
 #include "webrtc/modules/audio_processing/ns/include/noise_suppression_x.h"
 #include "webrtc/common_audio/signal_processing/include/real_fft.h"
 #include "webrtc/modules/audio_processing/ns/nsx_core.h"

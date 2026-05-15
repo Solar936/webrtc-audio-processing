@@ -13,7 +13,6 @@
 //#include <assert.h>
 #include <stdlib.h>
 #include <string.h>
-#include <rtthread.h>
 #include "webrtc_mem.h"
 
 // Number of right shifts for scaling is linearly depending on number of bits in

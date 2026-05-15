@@ -2,11 +2,8 @@
 
 #include <assert.h>
 #include <stdlib.h>
-#include <rtthread.h>
 #include "webrtc_mem.h"
 
-#undef assert
-#define assert RT_ASSERT
 
 #ifdef __cplusplus
 extern "C" {

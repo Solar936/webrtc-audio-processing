@@ -108,8 +108,5 @@
 #define NO_RETURN
 #endif
 
-#include <rtthread.h>
-#undef assert
-#define assert RT_ASSERT
 
 #endif  // WEBRTC_TYPEDEFS_H_

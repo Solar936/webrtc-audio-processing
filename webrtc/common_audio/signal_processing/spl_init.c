@@ -142,7 +142,6 @@ void WebRtcSpl_Init() {
 }
 #else
 void WebRtcSpl_Init() {
+  InitPointersToC();
 }
-#include <rtthread.h>
-INIT_COMPONENT_EXPORT(InitFunctionPointers);
 #endif

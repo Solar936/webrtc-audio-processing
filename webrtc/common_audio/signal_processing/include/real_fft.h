@@ -24,16 +24,6 @@ struct RealFFT;
 extern "C" {
 #endif
 
-#ifdef FFT_USING_ONCHIP
-#include "bf0_hal_fft.h"
-#include "rtthread.h"
-typedef struct
-{
-    FFT_HandleTypeDef fft_handle;
-    rt_event_t int_ev;
-}fft_env_t;
-#endif
-
 struct RealFFT* WebRtcSpl_CreateRealFFT(int order);
 void WebRtcSpl_FreeRealFFT(struct RealFFT* self);
 
